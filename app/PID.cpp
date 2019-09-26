@@ -8,21 +8,17 @@
 
 #include <PID.h>
 
-
-public:
-
 /**
 * @brief This is the function which computes the pid calculations
-* @params
+* @params ADD PARAMETERS HERE
 * @return Corrected velocity
 */
 
-// compute method here
-
-// Implement stud here
-
-// atlease two unit tests, one for compute
-
+  double PID::compute(){
+  //STUB here
+    double velocity=1.0;
+    return velocity;
+  }
 
 PID::PID() {
   // TODO Auto-generated constructor stub

@@ -21,11 +21,7 @@ class PID {
 
  public:
   // compute method here
-  double PID::compute(){
-  //STUB here
-    double velocity=1.0;
-    return velocity;
-  }
+  double PID::compute();
   PID();
   virtual ~PID();
 };
