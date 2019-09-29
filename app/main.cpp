@@ -8,11 +8,12 @@
 
 
 #include <iostream>
-#include "PID.h"
+#include "PID.cpp"
 
 int main()
 {
-  PID mobileRobot;
+  PID mobileRobot(1,1,1, 13, 20, 0);
+  mobileRobot.compute(0,0);
 //  mobileRobot.method(params);
   return 0;
 }

@@ -9,21 +9,37 @@
 
 #ifndef INCLUDE_PID_H_
 #define INCLUDE_PID_H_
+#include <ctime>
+#include <chrono>
 
 class PID {
  private:
-  double Kp;
-  double Ki;
-  double Kd;
-  double targetSetpoint;
-  double actualVelocity;
-  //add a few more attributes
-
+    double kp;
+    double ki;
+    double kd;
+    double sampleTime;
+    double outMax;
+    double outMin;
+    double lastInput;
+    double iPart;
+    std::chrono::system_clock::time_point start;
  public:
-  // compute method here
-  double PID::compute();
-  PID();
-  virtual ~PID();
+    // compute method here
+    double compute(double actualVelocity, double targetSetpoint);
+    PID(double _Kp, double _Kd, double _Ki, unsigned long _SampleTime,
+               double _outMax, double _outMin);
+    void setKp(double _Kp);
+    double getKp();
+    void setKi(double _Ki);
+    double getKi();
+    void setKd(double _Kd);
+    double getKd();
+    void setSampleTime(double _SampleTime);
+    double getSampleTime();
+    void setOutMax(double _OutMax);
+    double getOutMax();
+    void setOutMin(double _OutMin);
+    double getOutMin();
 };
 
 #endif /* INCLUDE_PID_H_ */
