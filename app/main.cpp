@@ -10,10 +10,17 @@
 #include <iostream>
 #include "PID.cpp"
 
+
+/**
+* @brief Main compute function for PID Controller
+* @author Jagadesh Nagareddi, Toyas Dhake
+*/
 int main()
 {
-  PID mobileRobot(1,1,1, 13, 20, 0);
-  mobileRobot.compute(0,0);
-//  mobileRobot.method(params);
-  return 0;
+    double change;
+    //Contructor initializing value Kp, Kd, Ki, SampleTime, OutMax, OutMin
+    PID mobileRobot(1,1,1, 13, 20, 0);
+    //Main compute function 
+    change = mobileRobot.compute(0,0);
+    return 0;
 }
