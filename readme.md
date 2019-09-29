@@ -16,7 +16,7 @@ The implementation inputs variables kp, kd and ki. It defines a compute function
 
 The link to code coverage can be found here
 
-Travis path : [![Build
+Travis path :
 
 [![Build Status](https://travis-ci.org/NJNischal/cpp-boilerplate.svg?branch=master)](https://travis-ci.org/NJNischal/cpp-boilerplate)
 
