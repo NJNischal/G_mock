@@ -18,11 +18,11 @@ The link to code coverage can be found here
 
 Travis path :
 
-[![Build Status](https://travis-ci.org/NJNischal/cpp-boilerplate.svg?branch=master)](https://travis-ci.org/NJNischal/cpp-boilerplate)
+[![Build Status](https://travis-ci.org/shivamakhauri04/cpp-boilerplate.svg?branch=master)](https://travis-ci.org/shivamakhauri04/cpp-boilerplate)
 
 Coveralls :
 
-[![Coverage Status](https://coveralls.io/repos/github/NJNischal/cpp-boilerplate/badge.svg?branch=team_b)](https://coveralls.io/github/NJNischal/cpp-boilerplate?branch=team_b)
+[![Coverage Status](https://coveralls.io/repos/github/NJNischal/cpp-boilerplate/badge.svg?branch=master)](https://coveralls.io/github/NJNischal/cpp-boilerplate?branch=master)
 
 ### Compiling and Running
 
