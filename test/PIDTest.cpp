@@ -1,5 +1,5 @@
 #include <gtest/gtest.h>
-#include "../app/PID.cpp"
+#include "../include/PID.h"
 
 /**
 * @brief Test for compute function
