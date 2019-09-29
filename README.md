@@ -18,7 +18,7 @@ The link to code coverage can be found here
 
 Travis path :
 
-[![Build Status](https://travis-ci.org/shivamakhauri04/cpp-boilerplate.svg?branch=master)](https://travis-ci.org/shivamakhauri04/cpp-boilerplate)
+[![Build Status](https://travis-ci.org/NJNischal/cpp-boilerplate.svg?branch=master)](https://travis-ci.org/NJNischal/cpp-boilerplate)
 
 Coveralls :
 
