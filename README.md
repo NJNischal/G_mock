@@ -18,11 +18,11 @@ The link to code coverage can be found here
 
 Travis path :
 
-[![Build Status](https://travis-ci.org/NJNischal/cpp-boilerplate.svg?branch=master)](https://travis-ci.org/NJNischal/cpp-boilerplate)
+[![Build Status](https://travis-ci.org/Chinj17/AcmeRoboticsPIDcontroller_week5Assignment.svg?branch=master)](https://travis-ci.org/Chinj17/AcmeRoboticsPIDcontroller_week5Assignment)
 
 Coveralls :
 
-[![Coverage Status](https://coveralls.io/repos/github/NJNischal/cpp-boilerplate/badge.svg?branch=master)](https://coveralls.io/github/NJNischal/cpp-boilerplate?branch=master)
+[![Coverage Status](https://coveralls.io/repos/github/Chinj17/AcmeRoboticsPIDcontroller_week5Assignment/badge.svg?branch=master)](https://coveralls.io/github/Chinj17/AcmeRoboticsPIDcontroller_week5Assignment?branch=master)
 
 ### Compiling and Running
 
