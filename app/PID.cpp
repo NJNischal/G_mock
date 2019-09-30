@@ -21,26 +21,30 @@ double PID::compute(double actualVelocity, double targetSetpoint) {
     unsigned timeChange = std::chrono::duration_cast
                             <std::chrono::milliseconds>(start - end).count();
     if ( timeChange >= sampleTime ) {
+        // the current velocity
         double input = actualVelocity;
+        // the error for the velocity
         double error = targetSetpoint - input;
+        // to update error
         double dPart = (input - lastInput);
         iPart+= (ki * error);
-
+        // if value is more than max or lesser than min
         if ( iPart > outMax )
             iPart = outMax;
         else if ( iPart < outMin )
             iPart = outMin;
 
         double output;
+        // derievative term
         output = kp * error;
-
+        // output integrated over time
         output += iPart - kd * dPart;
-
+        // define the max and min pid velocity 
         if ( output > outMax )
             output = outMax;
         else if (output < outMin)
             output = outMin;
-
+        // update input
         lastInput = input;
         start = end;
         return output;
