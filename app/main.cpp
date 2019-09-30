@@ -1,5 +1,5 @@
+//! "Copyright [2019] Jagadesh,ToyasDhake,ShivamAkhauri,ChinmayJoshi"
 /**
-* @copyright 2019 Jagadesh Nischal Nagireddi, Toyas Dhake
 * @file main.cpp
 * @author Jagadesh NischalNagireddi,Toyas Dhake,ShivamAkhauri,ChinmayJoshi
 * @date 26 Spetember 2019
