@@ -1,12 +1,12 @@
 /**
 * @file PID.cpp
-* @author Jagadesh Nischal Nagireddi (Driver), Toyas Dhake (Navigator)
+* @author Jagadesh Nischal Nagireddi,Toyas Dhake, Shivam Akhauri,Chinmay Joshi
 * @date 26 Spetember 2019
 * @copyright 2019 Jagadesh Nischal Nagireddi, Toyas Dhake
 * @brief This is a class for a PID controller
 */
 
-#include <PID.h>
+#include "../include/PID.h"
 
 /**
 * @brief This is the function which computes the pid calculations
@@ -39,7 +39,7 @@ double PID::compute(double actualVelocity, double targetSetpoint) {
         output = kp * error;
         // output integrated over time
         output += iPart - kd * dPart;
-        // define the max and min pid velocity 
+        // define the max and min pid velocity
         if ( output > outMax )
             output = outMax;
         else if (output < outMin)
