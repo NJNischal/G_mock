@@ -14,37 +14,39 @@
 * @params targetSetpoint Expected velocity reading
 * @return change needed to be applied.
 */
+
 double PID::compute(double actualVelocity, double targetSetpoint) {
     std::chrono::system_clock::time_point end =
                                     std::chrono::system_clock::now();
-    unsigned long timeChange = std::chrono::duration_cast
+    unsigned timeChange = std::chrono::duration_cast
                             <std::chrono::milliseconds>(start - end).count();
-    if(timeChange >= sampleTime) {
+    if ( timeChange >= sampleTime ) {
         double input = actualVelocity;
         double error = targetSetpoint - input;
         double dPart = (input - lastInput);
         iPart+= (ki * error);
 
-        if(iPart > outMax)
-            iPart= outMax;
-        else if(iPart < outMin)
-            iPart= outMin;
+        if ( iPart > outMax )
+            iPart = outMax;
+        else if ( iPart < outMin )
+            iPart = outMin;
 
-   double output;
+        double output;
         output = kp * error;
 
         output += iPart - kd * dPart;
 
-   if(output > outMax)
-       output = outMax;
-        else if(output < outMin)
+        if ( output > outMax )
+            output = outMax;
+        else if (output < outMin)
             output = outMin;
 
         lastInput = input;
         start = end;
         return output;
-    }
-    else return 0;
+    } else {
+        return 0;
+      }
 }
 
 /**
@@ -56,7 +58,7 @@ double PID::compute(double actualVelocity, double targetSetpoint) {
 * @params _outMax Maximum allowed output value
 * @params _outMin Minimum allowed output value
 */
-PID::PID(double _Kp, double _Kd, double _Ki, unsigned long _SampleTime,
+PID::PID(double _Kp, double _Kd, double _Ki, unsigned _SampleTime,
                double _outMax, double _outMin) {
     kp = _Kp;
     kd = _Kd;
@@ -136,7 +138,7 @@ double PID::getSampleTime() {
 * @params _OutMax New value for outMax
 */
 void PID::setOutMax(double _OutMax) {
-    outMax =_OutMax;
+    outMax = _OutMax;
 }
 
 /**
@@ -152,7 +154,7 @@ double PID::getOutMax() {
 * @params _OutMin New value for outMin
 */
 void PID::setOutMin(double _OutMin) {
-    outMin =_OutMin;
+    outMin = _OutMin;
 }
 
 /**

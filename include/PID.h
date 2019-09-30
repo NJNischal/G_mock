@@ -23,10 +23,11 @@ class PID {
     double lastInput;
     double iPart;
     std::chrono::system_clock::time_point start;
+
  public:
     // compute method here
     double compute(double actualVelocity, double targetSetpoint);
-    PID(double _Kp, double _Kd, double _Ki, unsigned long _SampleTime,
+    PID(double _Kp, double _Kd, double _Ki, unsigned _SampleTime,
                double _outMax, double _outMin);
     void setKp(double _Kp);
     double getKp();
@@ -42,4 +43,4 @@ class PID {
     double getOutMin();
 };
 
-#endif /* INCLUDE_PID_H_ */
+#endif  // INCLUDE_PID_H_
