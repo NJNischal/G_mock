@@ -15,9 +15,37 @@
 * @return change needed to be applied.
 */
 double PID::compute(double actualVelocity, double targetSetpoint) {
-    double velocity=1.0;
-    return velocity;
-  }
+    std::chrono::system_clock::time_point end =
+                                    std::chrono::system_clock::now();
+    unsigned long timeChange = std::chrono::duration_cast
+                            <std::chrono::milliseconds>(start - end).count();
+    if(timeChange >= sampleTime) {
+        double input = actualVelocity;
+        double error = targetSetpoint - input;
+        double dPart = (input - lastInput);
+        iPart+= (ki * error);
+
+        if(iPart > outMax)
+            iPart= outMax;
+        else if(iPart < outMin)
+            iPart= outMin;
+
+   double output;
+        output = kp * error;
+
+        output += iPart - kd * dPart;
+
+   if(output > outMax)
+       output = outMax;
+        else if(output < outMin)
+            output = outMin;
+
+        lastInput = input;
+        start = end;
+        return output;
+    }
+    else return 0;
+}
 
 /**
 * @brief This is constructor for PID class setting soem required parameters
@@ -36,7 +64,7 @@ PID::PID(double _Kp, double _Kd, double _Ki, unsigned long _SampleTime,
     sampleTime = _SampleTime;
     outMax = _outMax;
     outMin = _outMin;
-    start = std::chrono::system_clock::now();   
+    start = std::chrono::system_clock::now();
 }
 
 /**
