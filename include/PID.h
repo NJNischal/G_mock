@@ -1,46 +1,80 @@
 
-/**
-* @file PID.h
-* @author Jagadesh Nischal Nagireddi (Driver), Toyas Dhake (Navigator)
-* @date 26 Spetember 2019
-* @copyright 2019 Jagadesh Nischal Nagireddi, Toyas Dhake
-* @brief This is a class for a PID controller
-*/
 
 #ifndef INCLUDE_PID_H_
 #define INCLUDE_PID_H_
-#include <ctime>
-#include <chrono>
 
-class PID {
- private:
-    double kp;
-    double ki;
-    double kd;
-    double sampleTime;
-    double outMax;
-    double outMin;
-    double lastInput;
-    double iPart;
-    std::chrono::system_clock::time_point start;
+#include <iostream>
+#include "generalPID.h"
 
+/**
+ * @brief generalPID Class
+ * derived class of the base generalPID class
+ * implements the computePID
+ */
+class PID : public generalPID {
  public:
-    // compute method here
-    double compute(double actualVelocity, double targetSetpoint);
-    PID(double _Kp, double _Kd, double _Ki, unsigned _SampleTime,
-               double _outMax, double _outMin);
-    void setKp(double _Kp);
-    double getKp();
-    void setKi(double _Ki);
-    double getKi();
-    void setKd(double _Kd);
-    double getKd();
-    void setSampleTime(double _SampleTime);
-    double getSampleTime();
-    void setOutMax(double _OutMax);
-    double getOutMax();
-    void setOutMin(double _OutMin);
-    double getOutMin();
+  /**
+   * @brief default constructor PID class
+   * @param none
+   * @return none
+   * Initializes all gain values of
+   * the base class to zero
+   */
+  PID();
+
+  /**
+   * @brief constructor PID class
+   * @param kp of type float
+   * @param kd of type float
+   * @param ki of type float
+   * @param dt of type float
+   * @return none
+   * Initializes gains and dt to the values passed
+   * to the constructor
+   */
+  PID(float kp, float kd, float ki, float dt);
+
+  /**
+   * @brief Destructor for PID class
+   * @param none
+   * @return none
+   * destroys class objects when
+   * it goes out of scope
+   */
+  ~PID();
+
+  /**
+   * @brief getKP function
+   * @param none
+   * @return kp gain of type float
+   * returns the kp gain upon request
+   */
+  float getKP();
+
+  /**
+   * @brief getKD function
+   * @param none
+   * @return kd gain of type float
+   * returns the kd gain upon request
+   */
+  float getKD();
+
+  /**
+   * @brief getKI function
+   * @param none
+   * @return ki gain of type float
+   * returns the ki gain upon request
+   */
+  float getKI();
+
+  /**
+   * @brief computePID function
+   * @param spVel of type float
+   * @param currVel of type float
+   * @return input of type float
+   */
+  float computePID(float spVel, float currVel);
+
 };
 
-#endif  // INCLUDE_PID_H_
+#endif /* INCLUDE_PID_H_ */
