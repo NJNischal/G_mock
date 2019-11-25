@@ -1,0 +1,6 @@
+Param.h:0:  No copyright message found.  You should have a line: "Copyright [year] <Copyright Owner>"  [legal/copyright] [5]
+Param.h:1:  #ifndef header guard has wrong style, please use: _HOME_CHINMAY17_GMOCK_INCLUDE_PARAM_H_  [build/header_guard] [5]
+Param.h:12:  #endif line should be "#endif  // _HOME_CHINMAY17_GMOCK_INCLUDE_PARAM_H_"  [build/header_guard] [5]
+Param.h:5:  <chrono> is an unapproved C++11 header.  [build/c++11] [5]
+Done processing Param.h
+Total errors found: 4

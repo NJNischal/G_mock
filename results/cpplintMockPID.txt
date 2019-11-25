@@ -1,0 +1,4 @@
+MockPID.h:42:  #ifndef header guard has wrong style, please use: _HOME_CHINMAY17_GMOCK_INCLUDE_MOCKPID_H_  [build/header_guard] [5]
+MockPID.h:54:  #endif line should be "#endif  // _HOME_CHINMAY17_GMOCK_INCLUDE_MOCKPID_H_"  [build/header_guard] [5]
+Done processing MockPID.h
+Total errors found: 2

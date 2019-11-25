@@ -1,0 +1,5 @@
+PID.h:43:  #ifndef header guard has wrong style, please use: _HOME_CHINMAY17_GMOCK_INCLUDE_PID_H_  [build/header_guard] [5]
+PID.h:75:  #endif line should be "#endif  // _HOME_CHINMAY17_GMOCK_INCLUDE_PID_H_"  [build/header_guard] [5]
+PID.h:46:  <chrono> is an unapproved C++11 header.  [build/c++11] [5]
+Done processing PID.h
+Total errors found: 3
