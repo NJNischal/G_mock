@@ -1,6 +1,5 @@
 ### PID Controller implementation from ACME Robotics.
-[![Build Status](https://travis-ci.org/Chinj17/AcmeRoboticsPIDcontroller_week5Assignment.svg?branch=GMock_Extra_Credit)](https://travis-ci.org/Chinj17/AcmeRoboticsPIDcontroller_week5Assignment)
-[![Coverage Status](https://coveralls.io/repos/github/Chinj17/AcmeRoboticsPIDcontroller_week5Assignment/badge.svg?branch=GMock_Extra_Credit)](https://coveralls.io/github/Chinj17/AcmeRoboticsPIDcontroller_week5Assignment?branch=master)
+[![Build Status](https://travis-ci.org/Chinj17/AcmeRoboticsPIDcontroller_week5Assignment.svg?branch=GMock_Extra_Credit_Chinj17)](https://travis-ci.org/Chinj17/AcmeRoboticsPIDcontroller_week5Assignment)
 
 Welcome to Acme Robotics. We provide control solutions for your robots. Based on type pf requirement we give PID controller, LQR contorller, etc. We also provide filtering algorithms for you sensor fusion tasks.
 
