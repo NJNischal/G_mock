@@ -21,10 +21,6 @@
 * PID controller implementation for mobile robot.
 */
 
-#include <iostream>
-#include "PID.h"
-#include "parameters.h"
-
 /**
 * @brief Main compute function for PID Controller
 */
