@@ -1,85 +1,55 @@
-//! "Copyright [2019] Jagadesh,ToyasDhake,ShivamAkhauri,ChinmayJoshi"
 /**
-* @file PID.cpp
-* @author Jagadesh Nischal Nagireddi,Toyas Dhake, Shivam Akhauri,Chinmay Joshi
-* @date 26 Spetember 2019
-* @copyright 2019 Jagadesh Nischal Nagireddi, Toyas Dhake
-* @brief This is a class for a PID controller
-*/
+ * @file main.cpp
+ * @brief This is a the main class for the PID implementation project
+ *        PID controller implementation for mobile robot.
+ *
+ * BSD 3-Clause License
+ *
+ * @copyright Copyright (c) Chinmay Joshi
+ *
+ * All rights reserved.
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions are met:
+ *
+ * * Redistributions of source code must retain the above copyright notice,
+ *   this list of conditions and the following disclaimer.
+ *
+ * * Redistributions in binary form must reproduce the above copyright notice,
+ *   this list of conditions and the following disclaimer in the documentation
+ *   and/or other materials provided with the distribution.
+ *
+ * * Neither the name of the copyright holder nor the names of its
+ *   contributors may be used to endorse or promote products derived from
+ *   this software without specific prior written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+ * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ * ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE
+ * LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+ * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+ * SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+ * INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+ * CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+ * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+ * POSSIBILITY OF SUCH DAMAGE.
+ *
+ * @author Chinmay Joshi
+ *
+ * @date 11-24-2019
+ */
 
-#include "../include/PID.h"
-
-/**
-* @brief This is the function which computes the pid calculations
-* @params actualVelocity Recent velocity reading
-* @params targetSetpoint Expected velocity reading
-* @return change needed to be applied.
-*/
-
-double PID::compute(double actualVelocity, double targetSetpoint) {
-    std::chrono::system_clock::time_point end =
-                                    std::chrono::system_clock::now();
-    unsigned timeChange = std::chrono::duration_cast
-                            <std::chrono::milliseconds>(start - end).count();
-    if ( timeChange >= sampleTime ) {
-        // the current velocity
-        double input = actualVelocity;
-        // the error for the velocity
-        double error = targetSetpoint - input;
-        // to update error
-        double dPart = (input - lastInput);
-        iPart+= (ki * error);
-        // if value is more than max or lesser than min
-        if ( iPart > outMax )
-            iPart = outMax;
-        else if ( iPart < outMin )
-            iPart = outMin;
-
-        double output;
-        // derievative term
-        output = kp * error;
-        // output integrated over time
-        output += iPart - kd * dPart;
-        // define the max and min pid velocity
-        if ( output > outMax )
-            output = outMax;
-        else if (output < outMin)
-            output = outMin;
-        // update input
-        lastInput = input;
-        start = end;
-        return output;
-    } else {
-        return 0;
-      }
-}
-
-/**
-* @brief This is constructor for PID class setting soem required parameters
-* @params _Kp Multipling factor for proportional
-* @params _Kd Multipling factor for derivative
-* @params _Ki Multipling factor for integral
-* @params _SmapleTime The rate at which PID should be computed
-* @params _outMax Maximum allowed output value
-* @params _outMin Minimum allowed output value
-*/
-PID::PID(double _Kp, double _Kd, double _Ki, unsigned _SampleTime,
-               double _outMax, double _outMin) {
-    kp = _Kp;
-    kd = _Kd;
-    ki = _Ki;
-    sampleTime = _SampleTime;
-    outMax = _outMax;
-    outMin = _outMin;
-    start = std::chrono::system_clock::now();
-}
+#include <../include/PID.h>
+PID::PID() {}
+PID::~PID() {}
 
 /**
 * @breif This function sets value of kp
 * @params _Kp New value for kp
 */
-void PID::setKp(double _Kp) {
-    kp = _Kp;
+void PID::setKp(double Kp) {
+    kp = Kp;
 }
 
 /**
@@ -94,8 +64,8 @@ double PID::getKp() {
 * @breif This function sets value of ki
 * @params _Ki New value for ki
 */
-void PID::setKi(double _Ki) {
-    ki = _Ki;
+void PID::setKi(double Ki) {
+    ki = Ki;
 }
 
 /**
@@ -110,8 +80,8 @@ double PID::getKi() {
 * @breif This function sets value of kd
 * @params _Kd New value for kd
 */
-void PID::setKd(double _Kd) {
-    kd = _Kd;
+void PID::setKd(double Kd) {
+    kd = Kd;
 }
 
 /**
@@ -126,8 +96,8 @@ double PID::getKd() {
 * @breif This function sets value of sampleTime
 * @params _SampleTime New value for sampleTime
 */
-void PID::setSampleTime(double _SampleTime) {
-    sampleTime = _SampleTime;
+void PID::setSampleTime(double SampleTime) {
+    sampleTime = SampleTime;
 }
 
 /**
@@ -142,8 +112,8 @@ double PID::getSampleTime() {
 * @breif This function sets value of outMax
 * @params _OutMax New value for outMax
 */
-void PID::setOutMax(double _OutMax) {
-    outMax = _OutMax;
+void PID::setOutMax(double OutMax) {
+    outMax = OutMax;
 }
 
 /**
@@ -158,8 +128,8 @@ double PID::getOutMax() {
 * @breif This function sets value of outMin
 * @params _OutMin New value for outMin
 */
-void PID::setOutMin(double _OutMin) {
-    outMin = _OutMin;
+void PID::setOutMin(double OutMin) {
+    outMin = OutMin;
 }
 
 /**
