@@ -28,13 +28,44 @@
 /**
 * @brief Main compute function for PID Controller
 */
-int main() {
-    double change;
-    PID mobileRobot;
-    Parameter comp;
+#include <iostream>
+#include "PID.h"
+#include "generalPID.h"
+#include "memory"
 
-    // Main compute function
-    change = comp.compute(1.0, 1.0, mobileRobot);
-    std::cout << "Computed velocity is: " << change << std::endl;
-    return 0;
+/**
+ * @brief      main function
+ * @param      none
+ * @param      none
+ * @return     int of value zero
+ */
+int main() {
+  // Instantiate a object
+  PID pid;
+  // point the virtual class object to the PID class
+  std::unique_ptr<generalPID> gpid = std::make_unique<PID>();
+
+  // variables to hold user input
+  float fVal, iVal;
+
+  // input Target setpoint velocity
+  std::cout << "Enter the Target setpoint velocity" << std::endl;
+  std::cin >> fVal;
+
+  // input actual velocity
+  std::cout << "Enter the actual velocity" << std::endl;
+  std::cin >> iVal;
+
+  // set the PID gains
+  gpid->setKD(1);
+  gpid->setKI(0.1);
+  gpid->setKP(2);
+
+  // compute the control input
+  float inc = pid.computePID(fVal, iVal);
+
+  // output the input to the screen
+  std::cout << "Input: " << inc << std::endl;
+
+  return 0;
 }
