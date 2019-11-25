@@ -1,146 +1,54 @@
-//! "Copyright[2019] Jagadesh,ToyasDhake,ShivamAkhauri,ChinmayJoshi"
 /**
-* @file PIDTest.cpp
-* @author Jagadesh NischalNagireddi,ToyasDhake,ShivamAkhauri,ChinmayJoshi
-* @date 26 Spetember 2019
-* @copyright 2019 Jagadesh Nischal Nagireddi, Toyas Dhake
-* @brief This is a class for a PID controller
-*/
+ * @file main.cpp
+ * @brief This is a the main class for the PID implementation project
+ *        PID controller implementation for mobile robot.
+ *
+ * BSD 3-Clause License
+ *
+ * @copyright Copyright (c) Chinmay Joshi
+ *
+ * All rights reserved.
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions are met:
+ *
+ * * Redistributions of source code must retain the above copyright notice,
+ *   this list of conditions and the following disclaimer.
+ *
+ * * Redistributions in binary form must reproduce the above copyright notice,
+ *   this list of conditions and the following disclaimer in the documentation
+ *   and/or other materials provided with the distribution.
+ *
+ * * Neither the name of the copyright holder nor the names of its
+ *   contributors may be used to endorse or promote products derived from
+ *   this software without specific prior written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+ * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ * ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE
+ * LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+ * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+ * SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+ * INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+ * CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+ * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+ * POSSIBILITY OF SUCH DAMAGE.
+ *
+ * @author Chinmay Joshi
+ *
+ * @date 11-24-2019
+ */
 #include <gtest/gtest.h>
-#include "../include/PID.h"
+#include <gmock/gmock.h>
+#include <../include/PID.h>
+#include <../include/Param.h>
+#include <../include/MockPID.h>
 
-/**
-* @brief Test for compute function
-*/
-TEST(computeTest, should_pass) {
-    PID pid(0, 0, 0, 0, 0, 0);
-    double something = pid.compute(0, 0);
-    EXPECT_EQ(0, something);
+TEST(MockPIDTest, PIDParamMockTest) {
+  MockPid pid;
+  Parameter comp;
+  // reader.ImgsDir = "../INRIAPerson/Train/pos/crop001001.png";
+  EXPECT_CALL(pid, getKd()).Times(1);
+  comp.compute(0, 0, pid);
 }
-
-/**
-* @brief Test for constructor setting sampleTime
-*/
-TEST(constructorTestForSampleTime, should_pass) {
-    int temp = 13;
-    PID pid(0, 0, 0, temp, 0, 0);
-    double something = pid.getSampleTime();
-    EXPECT_EQ(temp, something);
-}
-
-/**
-* @brief Test for constructor setting kp
-*/
-TEST(constructorTestForKp, should_pass) {
-    int temp = 13;
-    PID pid(temp, 0, 0, 0, 0, 0);
-    double something = pid.getKp();
-    EXPECT_EQ(temp, something);
-}
-
-/**
-* @brief Test for constructor setting kd
-*/
-TEST(constructorTestForKd, should_pass) {
-    int temp = 13;
-    PID pid(0, temp, 0, 0, 0, 0);
-    double something = pid.getKd();
-    EXPECT_EQ(temp, something);
-}
-
-/**
-* @brief Test for constructor setting ki
-*/
-TEST(constructorTestForKi, should_pass) {
-    int temp = 13;
-    PID pid(0, 0, temp, 0, 0, 0);
-    double something = pid.getKi();
-    EXPECT_EQ(temp, something);
-}
-
-/**
-* @brief Test for constructor setting outMax
-*/
-TEST(constructorTestForOutMax, should_pass) {
-    int temp = 13;
-    PID pid(0, 0, 0, 0, temp, 0);
-    double something = pid.getOutMax();
-    EXPECT_EQ(temp, something);
-}
-
-/**
-* @brief Test for constructor setting outMin
-*/
-TEST(constructorTestForOutMin, should_pass) {
-    int temp = 13;
-    PID pid(0, 0, 0, 0, 0, temp);
-    double something = pid.getOutMin();
-    EXPECT_EQ(temp, something);
-}
-
-/**
-* @brief Test for setter of sampleTime
-*/
-TEST(setterTestForSampleTime, should_pass) {
-    int temp = 13;
-    PID pid(0, 0, 0, 0, 0, 0);
-    pid.setSampleTime(temp);
-    double something = pid.getSampleTime();
-    EXPECT_EQ(temp, something);
-}
-
-/**
-* @brief Test for setter of kp
-*/
-TEST(setterTestForKp, should_pass) {
-    int temp = 13;
-    PID pid(0, 0, 0, 0, 0, 0);
-    pid.setKp(temp);
-    double something = pid.getKp();
-    EXPECT_EQ(temp, something);
-}
-
-/**
-* @brief Test for setter of ki
-*/
-TEST(setterTestForKi, should_pass) {
-    int temp = 13;
-    PID pid(0, 0, 0, 0, 0, 0);
-    pid.setKi(temp);
-    double something = pid.getKi();
-    EXPECT_EQ(temp, something);
-}
-
-/**
-* @brief Test for setter of kd
-*/
-TEST(setterTestForKd, should_pass) {
-    int temp = 13;
-    PID pid(0, 0, 0, 0, 0, 0);
-    pid.setKd(temp);
-    double something = pid.getKd();
-    EXPECT_EQ(temp, something);
-}
-
-/**
-* @brief Test for setter of outMax
-*/
-TEST(setterTestForOutMax, should_pass) {
-    int temp = 13;
-    PID pid(0, 0, 0, 0, 0, 0);
-    pid.setOutMax(temp);
-    double something = pid.getOutMax();
-    EXPECT_EQ(temp, something);
-}
-
-/**
-* @brief Test for setter of outMin
-*/
-TEST(setterTestForOutMin, should_pass) {
-    int temp = 13;
-    PID pid(0, 0, 0, 0, 0, 0);
-    pid.setOutMin(temp);
-    double something = pid.getOutMin();
-    EXPECT_EQ(temp, something);
-}
-
