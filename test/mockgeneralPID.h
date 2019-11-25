@@ -14,15 +14,52 @@
 **/
 
 
+#ifndef INCLUDE_MOCKGENERALPID_H_
+#define INCLUDE_MOCKGENERALPID_H_
+
 #include <gtest/gtest.h>
+#include <gmock/gmock.h>
+#include "generalPID.h"
 
 /**
- * @brief      main function
- * @param      argc of type int
- * @param      argv of type char
- * @return     int of value zero
+ * @brief mockgeneralPID class
+ * class to initializes the mock method
+ * that are yet to be tested using gmock
  */
-int main(int argc, char** argv) {
-  ::testing::InitGoogleTest(&argc, argv);
-  return RUN_ALL_TESTS();
-}
+class mockgeneralPID : public generalPID {
+ public:
+  /**
+   * @brief computePID mock
+   * @param float currVel
+   * @param float spvel
+   * @return none
+   * initializes the computePID mock
+   */
+  MOCK_METHOD2(computePID, float(float,float));
+
+  /**
+   * @brief setKP mock
+   * @param float kp
+   * @return bool
+   * initializes the setKP mock
+   */
+  MOCK_METHOD1(setKP, bool(float kp));
+
+  /**
+   * @brief setKI mock
+   * @param float kI
+   * @return bool
+   * initializes the setKI mock
+   */
+  MOCK_METHOD1(setKI, bool(float ki));
+
+  /**
+   * @brief setKD mock
+   * @param float kD
+   * @return bool
+   * initializes the setKD mock
+   */
+  MOCK_METHOD1(setKD, bool(float kd));
+};
+
+#endif /* INCLUDE_MOCKGENERALPID_H_ */

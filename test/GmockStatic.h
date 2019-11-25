@@ -14,15 +14,60 @@
 **/
 
 
+
+
+
 #include <gtest/gtest.h>
+#include <gmock/gmock.h>
+#include "generalPID.h"
 
 /**
- * @brief      main function
- * @param      argc of type int
- * @param      argv of type char
- * @return     int of value zero
+ * @brief GMockStatic Class
+ * class to call functions of generalPID mock class
  */
-int main(int argc, char** argv) {
-  ::testing::InitGoogleTest(&argc, argv);
-  return RUN_ALL_TESTS();
-}
+class GmockStatic : public ::testing::Test {
+ public:
+  /**
+   * @brief set_Kp function
+   * @param instance of std::unique_ptr<generalPID>
+   * @return none
+   * initializes the object and
+   * calls the setKP in the generalPID class
+   */
+  void set_KP(std::unique_ptr<generalPID> instance) {
+    instance->setKP(3);
+  }
+
+  /**
+   * @brief set_KD function
+   * @param instance of std::unique_ptr<generalPID>
+   * @return none
+   * initializes the object and
+   * calls the setKD in the generalPID class
+   */
+  void set_KD(std::unique_ptr<generalPID> instance) {
+    instance->setKD(4);
+  }
+
+  /**
+   * @brief set_KI function
+   * @param instance of std::unique_ptr<generalPID>
+   * @return none
+   * initializes the object and
+   * calls the setKI in the generalPID class
+   */
+  void set_KI(std::unique_ptr<generalPID> instance) {
+    instance->setKI(0.2);
+  }
+
+  /**
+   * @brief compute_PID function
+   * @param instance of std::unique_ptr<generalPID>
+   * @return none
+   * initializes the object and
+   * calls the computePID in the generalPID class
+   */
+  void compute_PID(std::unique_ptr<generalPID> instance) {
+    instance->computePID(1, 2);
+  }
+};
